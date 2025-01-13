@@ -35,7 +35,7 @@ void test_maximum_egalite(void) {
 void test_minimum_meme_signe(void) {
   CU_ASSERT_EQUAL( minimum(31415, 123), 123);
   CU_ASSERT_EQUAL( minimum(2, 1), 1);
-  CU_ASSERT_EQUAL( minimum(-31415, -123), 31415);
+  CU_ASSERT_EQUAL( minimum(-31415, -123), -31415);
   CU_ASSERT_EQUAL( minimum(-2, -1), -2);
 }
 
