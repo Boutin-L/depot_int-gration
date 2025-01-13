@@ -15,6 +15,8 @@ int clean_suite(void) { return 0; }
 void test_maximum_meme_signe(void) {
   CU_ASSERT_EQUAL( maximum(31415, 123), 31415);
   CU_ASSERT_EQUAL( maximum(2, 1), 2);
+  CU_ASSERT_EQUAL( maximum(-31415, -123), -123);
+  CU_ASSERT_EQUAL( maximum(-2, -1), -1);
 }
 
 /**** Cas de test - maximum avec arguments de signes opposés ***/ 
@@ -30,6 +32,31 @@ void test_maximum_egalite(void) {
   CU_ASSERT_EQUAL( maximum(1234, 1234), 1234);
 }
 
+void test_minimum_meme_signe(void) {
+  CU_ASSERT_EQUAL( minimum(31415, 123), 123);
+  CU_ASSERT_EQUAL( minimum(2, 1), 1);
+  CU_ASSERT_EQUAL( minimum(-31415, -123), 31415);
+  CU_ASSERT_EQUAL( minimum(-2, -1), -2);
+}
+
+void test_minimum_signes_opposes(void) {
+  CU_ASSERT_EQUAL( minimum(21, -21), -21);
+  CU_ASSERT_EQUAL( minimum(21, -21), -21);
+}
+
+void test_minimum_egalite(void) {
+  CU_ASSERT_EQUAL( minimum(1234, 1234), 1234);
+  CU_ASSERT_EQUAL( minimum(-100, -100), -100);
+  CU_ASSERT_EQUAL( minimum(0, 0), 0);
+}
+
+void test_addition(void) {
+  CU_ASSERT_EQUAL( addition(10, -10), 0);
+  CU_ASSERT_EQUAL( addition(-200, 100), -100);
+  CU_ASSERT_EQUAL( addition(200, -100), 100);
+  CU_ASSERT_EQUAL( addition(1234, 1234), 2468);
+  CU_ASSERT_EQUAL( addition(-100, -100), -200);
+}
 /******************* Lancement des tests ***********************/
 int main ( void )
 {
@@ -51,6 +78,10 @@ int main ( void )
    if ( (NULL == CU_add_test(pSuite, "Cas de test - maximum avec arguments du même signe", test_maximum_meme_signe)) ||
         (NULL == CU_add_test(pSuite, "Cas de test - maximum avec arguments de signes opposés", test_maximum_signes_opposes)) ||
         (NULL == CU_add_test(pSuite, "Cas de test - maximum avec arguments égaux", test_maximum_egalite))
+        (NULL == CU_add_test(pSuite, "Cas de test - minimum avec arguments du même signe", test_minimum_meme_signe))
+        (NULL == CU_add_test(pSuite, "Cas de test - minimum avec arguments de signes opposés", test_minimum_signes_opposes))
+        (NULL == CU_add_test(pSuite, "Cas de test - minimum avec arguments égaux", test_minimum_egalite))
+        (NULL == CU_add_test(pSuite, "Cas de test - addition en tout genre", test_addition))
       )
    {;
       CU_cleanup_registry();
